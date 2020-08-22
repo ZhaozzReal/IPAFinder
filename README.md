@@ -5,3 +5,13 @@ IPAFinder performs de novo identification and quantification of dynamic IpA even
 
 ##  Diagram depicts the IPAFinder algorithm. 
 ![Sketch](https://github.com/ZhaozzReal/IPAFinder/blob/master/GitHub_manual.jpg)
+
+## Manual
+
+### Step 1:Get specialized annotation files contain intron and exon information from RefSeq GTF file.
+ 1、
+ 2、
+ 3、
+### IPAFinder input files
+ 1、 Mapped reads .bam file, Should be sorted and index using samtools
+ 2、 
