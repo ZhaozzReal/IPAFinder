@@ -2,4 +2,4 @@
 Dynamic analyses of intronic polyadenylation from standard RNAseq
 
 
-![Sketch](https://github.com/ZhaozzReal/IPAFinder/blob/master/GitHub_manual.jpg）
+![Sketch](https://github.com/ZhaozzReal/IPAFinder/blob/master/GitHub_manual.jpg)
