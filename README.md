@@ -24,3 +24,7 @@ IPAFinder performs de novo identification and quantification of dynamic IpA even
  2、 Specialized annotation file generated from Step 1
  
  ```python IPAFinder_Pairsample.py -N normal.bam -T tumor.bam -anno_txt IPAFinder_anno.txt -processors 5 -output IPAFinder_IpARatio.txt```
+
+
+## The following python packages are necessary
+HTSeq、pysam、itertools、numpy、collections、multiprocessing、scipy、argparse、copy、subprocess
