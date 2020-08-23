@@ -20,6 +20,7 @@ IPAFinder performs de novo identification and quantification of dynamic IpA even
 ### Detect dynamic IpA events between two conditions using standard RNA-seq
 ###  input files
  1、 Mapped reads .bam file, Should be sorted and index using samtools
+ 
  2、 Specialized annotation file generated from Step 1
  
- ```python IPAFinder_Pairsample.py 
+ ```python IPAFinder_Pairsample.py -N normal.bam -T tumor.bam -anno_txt IPAFinder_anno.txt -processors 5 -output IPAFinder_IpARatio.txt```
