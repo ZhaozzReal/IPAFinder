@@ -8,9 +8,18 @@ IPAFinder performs de novo identification and quantification of dynamic IpA even
 
 ## Manual
 
-### Step 1:Get specialized annotation files contain intron and exon information from RefSeq GTF file(could be downloaded from the UCSC website: https://genome.ucsc.edu/).
- ```python IPAFinder_GetAnno.py -gtf hg19refGene.gtf -output test.txt```
- 
-### IPAFinder input files
+### Step 1: 
+### Get specialized annotation file contain intron and exon information from RefSeq GTF file(could be downloaded from the UCSC website: https://genome.ucsc.edu/).
+
+
+**Command Example:**
+
+```python IPAFinder_GetAnno.py -gtf hg19refGene.gtf -output IPAFinder_anno.txt```
+
+### Step 2:
+### Detect dynamic IpA events between two conditions using standard RNA-seq
+###  input files
  1、 Mapped reads .bam file, Should be sorted and index using samtools
- 2、 
+ 2、 Specialized annotation file generated from Step 1
+ 
+ ```python IPAFinder_Pairsample.py 
