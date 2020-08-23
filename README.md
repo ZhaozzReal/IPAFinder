@@ -36,7 +36,8 @@ IPAFinder performs de novo identification and quantification of dynamic IpA even
 
 #### example of cfg.txt:
 
-```condition1=ctrl1.bam,ctrl2.bam 
+```
+condition1=ctrl1.bam,ctrl2.bam 
 condition2=case1.bam,case2.bam
 ```
 ## The following python packages are necessary
