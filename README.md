@@ -35,8 +35,7 @@ IPAFinder performs de novo identification and quantification of dynamic IpA even
 ```python IPAFinder_multisamples.py -cfg cfg.txt -anno_txt hg38_IPAFinder_anno.txt -processors 5 -output IPAFinder_output.txt```
 
 #### example of cfg.txt:
-```condition1=ctrl1.bam,ctrl2.bam
-condition2=case1.bam,case2.bam```
+```condition1=ctrl1.bam,ctrl2.bam\ncondition2=case1.bam,case2.bam```
 
 ## The following python packages are necessary
 HTSeq、pysam、itertools、numpy、collections、multiprocessing、scipy、argparse、copy、subprocess
