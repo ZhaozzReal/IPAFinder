@@ -14,14 +14,18 @@ IPAFinder performs *de novo* identification and quantification of dynamic IpA ev
 
 **Command Example:**
 
-```python IPAFinder_GetAnno.py -gtf hg38refGene.gtf -output IPAFinder_anno_hg38.txt```
+```
+python IPAFinder_GetAnno.py -gtf hg38refGene.gtf -output IPAFinder_anno_hg38.txt
+```
 
 ### Step 2:
 ### Detect dynamic IpA events from samples with replicates between two conditions using standard RNA-seq
 
 **Command Example:**
 
-```python IPAFinder_multisamples.py -cfg cfg.txt -anno_txt IPAFinder_anno_hg38.txt -processors 5 -output IPAFinder_output.txt```
+```
+python IPAFinder_multisamples.py -cfg cfg.txt -anno_txt IPAFinder_anno_hg38.txt -processors 5 -output IPAFinder_output.txt
+```
 
 #### example of cfg.txt:
 
@@ -37,7 +41,9 @@ condition2=case1.bam,case2.bam
 
  **Command Example:**
  
- ```python IPAFinder_Pairsample.py -N normal.bam -T tumor.bam -anno_txt IPAFinder_anno_hg38.txt -processors 5 -output IPAFinder_output.txt```
+ ```
+ python IPAFinder_Pairsample.py -N normal.bam -T tumor.bam -anno_txt IPAFinder_anno_hg38.txt -processors 5 -output IPAFinder_output.txt
+ ```
 
 ## The following python packages are necessary
 HTSeq、pysam、itertools、numpy、collections、multiprocessing、scipy、argparse、copy、subprocess
