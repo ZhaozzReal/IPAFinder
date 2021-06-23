@@ -34,9 +34,7 @@ condition2=case1.bam,case2.bam
 ### Step 2*:
 ### Detect dynamic IpA events from samples without replicates between two conditions using standard RNA-seq
 ###  input files
- 1、 Mapped reads .bam file, Should be sorted and index using samtools
- 2、 Specialized annotation file generated from Step 1
- 
+
  **Command Example:**
  
  ```python IPAFinder_Pairsample.py -N normal.bam -T tumor.bam -anno_txt IPAFinder_anno_hg38.txt -processors 5 -output IPAFinder_output.txt```
