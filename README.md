@@ -15,14 +15,14 @@ IPAFinder consists of both Python (3.5+) and R scripts:
 
    i. python (install packages HTSeq,pysam,itertools,numpy,collections,multiprocessing,scipy,argparse,copy,subprocess)
 
-  ii. R (install packages optparse,dplyr,stringr,DEXSeq)
+   ii. R (install packages optparse,dplyr,stringr,DEXSeq)
 
 2. Clone the lastest development version of IPAFinder and change directory:
 
-```
+ ```
 git clone https://github.com/ZhaozzReal/IPAFinder.git
 cd IPAFinder
-```
+ ```
 
 
 ## Manual
