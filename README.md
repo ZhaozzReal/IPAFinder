@@ -6,6 +6,25 @@ IPAFinder performs *de novo* identification and quantification of dynamic IpA ev
 ##  Diagram depicts the IPAFinder algorithm. 
 ![Sketch](https://github.com/ZhaozzReal/IPAFinder/blob/master/IPAFinder_diagram.jpg)
 
+
+## Installation
+
+IPAFinder consists of both Python and R scripts:
+
+1. Install the following software pre-requisites:
+
+  i. python (install packages HTSeq,pysam,itertools,numpy,collections,multiprocessing,scipy,argparse,copy,subprocess)
+
+ ii. R (install packages optparse,dplyr,stringr,DEXSeq)
+
+2. Clone the lastest development version of IPAFinder and change directory:
+
+```
+git clone https://github.com/ZhaozzReal/IPAFinder.git
+cd IPAFinder
+```
+
+
 ## Manual
 
 ### Step 1: 
