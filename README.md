@@ -9,13 +9,13 @@ IPAFinder performs *de novo* identification and quantification of dynamic IpA ev
 
 ## Installation
 
-IPAFinder consists of both Python and R scripts:
+IPAFinder consists of both Python (3.5+) and R scripts:
 
 1. Install the following software pre-requisites:
 
-  i. python (install packages HTSeq,pysam,itertools,numpy,collections,multiprocessing,scipy,argparse,copy,subprocess)
+   i. python (install packages HTSeq,pysam,itertools,numpy,collections,multiprocessing,scipy,argparse,copy,subprocess)
 
- ii. R (install packages optparse,dplyr,stringr,DEXSeq)
+  ii. R (install packages optparse,dplyr,stringr,DEXSeq)
 
 2. Clone the lastest development version of IPAFinder and change directory:
 
