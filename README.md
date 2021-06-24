@@ -25,7 +25,17 @@ IPAFinder consists of both Python (3.5+) and R scripts:
  ```
 
 
-## Manual
+
+## Usage 
+
+IPAFinder has three sub-commands:
+
+1.```IPAFinder_GetAnno.py```:
+
+2.```IPAFinder_DetectIPA.py```:
+
+3.```cal_DUIPA.R```:
+
 
 ### Step 1: 
 ### Get specialized annotation file contain intron and exon information from RefSeq GTF file(could be downloaded from the UCSC website: https://genome.ucsc.edu/).
