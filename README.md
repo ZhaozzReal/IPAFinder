@@ -12,9 +12,6 @@ IPAFinder performs *de novo* identification and quantification of dynamic IpA ev
 
 <img src="https://github.com/ZhaozzReal/IPAFinder/blob/master/IPAFinder_diagram.jpg" width="600" height="400"/>
 
-
-
-
 ## Installation
 
 IPAFinder consists of both Python (3.5+) and R scripts:
@@ -42,7 +39,7 @@ IPAFinder has three sub-commands:
 
 2.```IPAFinder_DetectIPA.py```: Detect and quantify IPA sites, and calculate read counts of all exons
 
-3.```cal_DUIPA.R```: Infer differential usage of IPA sites
+3.```Infer_DUIPA.R```: Infer differential usage of IPA sites
 
 
 
@@ -67,7 +64,7 @@ We have generated annotation file for hg19, hg38 and mm10, and ones could downlo
 **Command**
 
 ```
-python IPAFinder_multisamples.py -bam allbamfiles.txt -anno_txt IPAFinder_anno_hg38.txt -p 5 -o IPAFinder_IPUI.txt
+python IPAFinder_DetectIPA.py -b allbamfiles.txt -anno IPAFinder_anno_hg38.txt -p 5 -o IPAFinder_IPUI.txt
 ```
 
 allbamfiles.txt contains all filename of bamfile between two conditions, as shown below:
@@ -77,7 +74,7 @@ condition1=ctrl1.bam,ctrl2.bam
 condition2=case1.bam,case2.bam
 ```
 
-Following counting reads map to all exons, IPAFinder expects the results to be located inside its own sub-directory. For example, new generated results may appear with the following directory structure:
+Following counting reads mapped to all exons, IPAFinder expects the results to be located inside its own sub-directory. For example, new generated results may appear with the following directory structure:
 
 ```
 project/
@@ -127,6 +124,6 @@ The final output format is as follows:
 **Command**
 
  ```
- python IPAFinder_Pairsample.py -N normal.bam -T tumor.bam -anno IPAFinder_anno_hg38.txt -p 5 -o IPAFinder_output.txt
+ python IPAFinder_Pairedsample.py -b1 ctrl.bam -b2 case.bam -anno IPAFinder_anno_hg38.txt -p 5 -o IPAFinder_output.txt
  ```
 
