@@ -10,7 +10,7 @@ IPAFinder performs *de novo* identification and quantification of dynamic IpA ev
 
 ##  Diagram depicts the IPAFinder algorithm. 
 
-<img src="https://github.com/ZhaozzReal/IPAFinder/blob/master/Diagram.jpg" width="400" height="400"/>
+<img src="https://github.com/ZhaozzReal/IPAFinder/blob/master/Diagram.jpg" width="500" height="400"/>
 
 ## Installation
 
