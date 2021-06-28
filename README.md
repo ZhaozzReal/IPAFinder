@@ -119,7 +119,10 @@ The final output format is as follows:
 
 
 
-### IPAFinder analysis on samples without replicates 
+
+
+
+#### IPAFinder analysis on samples without replicates 
 
 **Command**
 
