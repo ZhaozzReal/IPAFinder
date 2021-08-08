@@ -10,7 +10,7 @@ IPAFinder performs *de novo* identification and quantification of dynamic IpA ev
 
 ##  Diagram depicts the IPAFinder algorithm. 
 
-<img src="https://github.com/ZhaozzReal/IPAFinder/blob/master/Diagram.jpg" width="500" height="400"/>
+<img src="https://github.com/ZhaozzReal/IPAFinder/blob/master/IPAFinder_diagram.jpg" width="600" height="400"/>
 
 ## Installation
 
@@ -61,7 +61,7 @@ We have generated annotation file for hg19, hg38 and mm10, and ones could downlo
 
 ## Detect and quantify IPA sites, and calculate read counts of all exons
 
-**Command**
+**Command** 
 
 ```
 python IPAFinder_DetectIPA.py -b allbamfiles.txt -anno IPAFinder_anno_hg38.txt -p 5 -o IPAFinder_IPUI.txt
@@ -88,7 +88,7 @@ project/
 
 ## Infer differential usage of IPA sites
 
-DEXSeq, which is widely used for differential exon usage analysis on RNA-seq data, was applied to detect differential usage of IPA sites.
+DEXSeq, which is widely used for differential exon usage analysis on RNA-seq data, was applied to detect differential usage of IPA sites. This statistical framework could account for biological variability between replicates and is robust to changes in isoform abundance between conditions.
 
 **Command**
 
@@ -119,14 +119,19 @@ The final output format is as follows:
 
 
 
+### IPAFinder analysis on paired samples without replicates 
 
-
-
-#### IPAFinder analysis on samples without replicates 
-
-**Command**
+**Option 1: Infer differential used IPA sites using Fisher's exact test**
 
  ```
- python IPAFinder_Pairedsample.py -b1 ctrl.bam -b2 case.bam -anno IPAFinder_anno_hg38.txt -p 5 -o IPAFinder_output.txt
+ python IPAFinder_PS_FET.py -b1 ctrl.bam -b2 case.bam -anno IPAFinder_anno_hg38.txt -p 5 -o IPAFinder_output.txt
  ```
+
+
+
+**Option 2: Infer differential used IPA sites using bootstrapping-based method**
+
+```
+python IPAFinder_PS_FDR.py -b1 ctrl.bam -b2 case.bam -anno IPAFinder_anno_hg38.txt -p 5 -o IPAFinder_output.txt
+```
 
