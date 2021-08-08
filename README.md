@@ -119,6 +119,10 @@ The final output format is as follows:
 
 
 
+
+
+
+
 ### IPAFinder analysis on paired samples without replicates 
 
 **Option 1: Infer differential used IPA sites using Fisher's exact test**
