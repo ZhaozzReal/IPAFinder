@@ -70,8 +70,8 @@ python IPAFinder_DetectIPA.py -b allbamfiles.txt -anno IPAFinder_anno_hg38.txt -
 allbamfiles.txt contains all filename of bamfile between two conditions, as shown below:
 
 ```
-condition1=ctrl1.bam,ctrl2.bam 
-condition2=case1.bam,case2.bam
+condition1=/path/to/ctrl1.bam,/path/to/ctrl2.bam 
+condition2=/path/to/case1.bam,/path/to/case2.bam
 ```
 
 Following counting reads mapped to all exons, IPAFinder expects the results to be located inside its own sub-directory. For example, new generated results may appear with the following directory structure:
