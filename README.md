@@ -4,7 +4,7 @@
 
 ## Description
 
-IPAFinder performs *de novo* identification and quantification of dynamic IpA events using standard RNA-seq, regardless of any prior poly(A) site annotation. Assuming there is an intronic poly(A) site used in a given intron, IPAFinder models the normalized single-nucleotide resolution RNA-seq read coverage profiles and identifies profound drop in coverage to infer the used poly(A) site. To detect skipped IpA (or splicing-coupled IpA), IPAFinder recognized cryptic 3′ splice site by junction-spanning reads and concatenated preceding exon to potential terminal exon. IPAFinder also has the ability to exclude alternative splicing events such as alternative 5′ splice site and cryptic exon activation by recognizing junction-spanning reads.
+IPAFinder performs *de novo* identification and quantification of dynamic IpA events using standard RNA-seq, regardless of any prior poly(A) site annotation. Assuming there is an intronic poly(A) site used in a given intron, IPAFinder models the normalized single-nucleotide resolution RNA-seq read coverage profiles and identifies profound drop in coverage to infer the used poly(A) site. To detect skipped IpA, IPAFinder recognized cryptic 3′ splice site by junction-spanning reads and concatenated preceding exon to potential terminal exon. IPAFinder also has the ability to exclude alternative splicing events such as alternative 5′ splice site and cryptic exon activation by recognizing junction-spanning reads.
 
 
 
@@ -18,7 +18,7 @@ IPAFinder consists of both Python (3.5+) and R scripts:
 
 1. Install the following software pre-requisites:
 
-   i. python (required packages HTSeq, pysam, itertools, numpy, collections, multiprocessing, scipy, argparse, copy, and subprocess)
+   i. python (required packages HTSeq, itertools, numpy, collections, multiprocessing, scipy, argparse, copy, and subprocess)
 
    ii. R (required packages optparse, dplyr, stringr, and DEXSeq)
 
@@ -64,7 +64,7 @@ We have generated annotation file for hg19, hg38 and mm10, and ones could downlo
 **Command** 
 
 ```
-python IPAFinder_DetectIPA.py -b allbamfiles.txt -anno IPAFinder_anno_hg38.txt -p 5 -o IPAFinder_IPUI.txt
+python IPAFinder_DetectIPA.py -b allbamfiles.txt -anno IPAFinder_anno_hg38.txt -p 10 -o IPAFinder_IPUI.txt
 ```
 
 allbamfiles.txt contains all filename of bamfile between two conditions, as shown below:
@@ -128,7 +128,7 @@ The final output format is as follows:
 **Option 1: Infer differential used IPA sites using Fisher's exact test**
 
  ```
- python IPAFinder_PS_FET.py -b1 ctrl.bam -b2 case.bam -anno IPAFinder_anno_hg38.txt -p 5 -o IPAFinder_output.txt
+ python IPAFinder_PS_FET.py -b1 ctrl.bam -b2 case.bam -anno IPAFinder_anno_hg38.txt -p 10 -o IPAFinder_output.txt
  ```
 
 
@@ -136,6 +136,6 @@ The final output format is as follows:
 **Option 2: Infer differential used IPA sites using bootstrapping-based method**
 
 ```
-python IPAFinder_PS_FDR.py -b1 ctrl.bam -b2 case.bam -anno IPAFinder_anno_hg38.txt -p 5 -o IPAFinder_output.txt
+python IPAFinder_PS_FDR.py -b1 ctrl.bam -b2 case.bam -anno IPAFinder_anno_hg38.txt -p 10 -o IPAFinder_output.txt
 ```
 
