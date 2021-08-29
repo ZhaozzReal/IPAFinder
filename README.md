@@ -52,7 +52,7 @@ The UCSC tool ```gtfToGenePred``` is required here.
 **Command**
 
 ```
-python IPAFinder_GetAnno.py -gtf hg38refGene.gtf -output IPAFinder_anno_hg38.txt
+python IPAFinder_GetAnno.py -gtf /path/to/hg38refGene.gtf -output /path/to/IPAFinder_anno_hg38.txt
 ```
 
 We have generated annotation file for hg19, hg38 and mm10, and ones could download and use it directly.
@@ -64,7 +64,7 @@ We have generated annotation file for hg19, hg38 and mm10, and ones could downlo
 **Command** 
 
 ```
-python IPAFinder_DetectIPA.py -b allbamfiles.txt -anno IPAFinder_anno_hg38.txt -p 10 -o IPAFinder_IPUI.txt
+python IPAFinder_DetectIPA.py -b /path/to/allbamfiles.txt -anno /path/to/IPAFinder_anno_hg38.txt -p 10 -o /path/to/IPAFinder_IPUI.txt
 ```
 
 allbamfiles.txt contains all filename of bamfile between two conditions, as shown below:
@@ -93,7 +93,7 @@ DEXSeq, which is widely used for differential exon usage analysis on RNA-seq dat
 **Command**
 
 ```
-Rscript Infer_DUIPA.R -b allbamfiles.txt -I IPAFinder_IPUI.txt -d project -o IPAFinder_DUIPA.txt
+Rscript Infer_DUIPA.R -b /path/to/allbamfiles.txt -I /path/to/IPAFinder_IPUI.txt -d project -o /path/to/IPAFinder_DUIPA.txt
 ```
 
 Final results will be saved in the file ```IPAFinder_DUIPA.txt```.
@@ -128,7 +128,7 @@ The final output format is as follows:
 **Option 1: Infer differential used IPA sites using Fisher's exact test**
 
  ```
- python IPAFinder_PS_FET.py -b1 ctrl.bam -b2 case.bam -anno IPAFinder_anno_hg38.txt -p 10 -o IPAFinder_output.txt
+ python IPAFinder_PS_FET.py -b1 /path/to/ctrl.bam -b2 /path/to/case.bam -anno /path/to/IPAFinder_anno_hg38.txt -p 10 -o /path/to/IPAFinder_output.txt
  ```
 
 
@@ -136,6 +136,6 @@ The final output format is as follows:
 **Option 2: Infer differential used IPA sites using bootstrapping-based method**
 
 ```
-python IPAFinder_PS_FDR.py -b1 ctrl.bam -b2 case.bam -anno IPAFinder_anno_hg38.txt -p 10 -o IPAFinder_output.txt
+python IPAFinder_PS_FDR.py -b1 /path/to/ctrl.bam -b2 /path/to/case.bam -anno /path/to/IPAFinder_anno_hg38.txt -p 10 -o /path/to/IPAFinder_output.txt
 ```
 
