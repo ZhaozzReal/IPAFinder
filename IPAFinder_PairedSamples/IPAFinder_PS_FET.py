@@ -333,7 +333,7 @@ def Get_PAlist(result_list):
 
 def Get_output(filename,PA_list,padj_list):
     out_IPUI = open(filename,"w")
-    first_line = ["SYMBOL","intron_rank","Terminal_exon","IPAtype",args.bamfile1.split(".")[0],args.bamfile2.split(".")[0],"diff","Pvalue","padj","change"]
+    first_line = ["SYMBOL","intron_rank","Terminal_exon","IPAtype",args.bamfile1.split("/")[-1].split(".")[0],args.bamfile2.split("/")[-1].split(".")[0],"diff","Pvalue","padj","change"]
     out_IPUI.writelines("\t".join(first_line)+"\n")
     for i in range(len(PA_list)):
         SYMBOL,intron_rank,Terminal_exon,IPAtype,IPUIctrl,IPUIcase,IPUIdiff,pvalue = PA_list[i]
