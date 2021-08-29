@@ -6,12 +6,12 @@ from multiprocessing import Pool
 import scipy as sp
 import scipy.stats
 from argparse import ArgumentParser,ArgumentTypeError
-parser = ArgumentParser(description="De novo analysis of Intronic Polyadenylation from standard RNA-seq (IpA analysis of paired samples)")
+parser = ArgumentParser(description="De novo analysis of Intronic Polyadenylation from standard RNA-seq (IpA analysis on paired samples)")
 parser.add_argument("-b1",dest='bamfile1',action="store",type=str,help="input bamfile1")
 parser.add_argument("-b2",dest="bamfile2",action="store",type=str,help="input bamfile2")
 parser.add_argument('-anno',dest='anno_txt',action="store",type=str,help="input annotation file contains intron and flanking exons")
 parser.add_argument("-p",dest="proc",action="store",default=10,type=int,help="<INT> Number of processors used [default: 10]")
-parser.add_argument("-o",dest="outfile",action="store",type=str,help="Output all Intron PAsite and IPARatio")
+parser.add_argument("-o",dest="outfile",action="store",type=str,help="Output all intronic poly(A) sites and their IPUI values")
 args = parser.parse_args()
 refGene_txt = args.anno_txt
 annot = collections.OrderedDict()
