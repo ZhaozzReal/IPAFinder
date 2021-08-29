@@ -93,7 +93,7 @@ DEXSeq, which is widely used for differential exon usage analysis on RNA-seq dat
 **Command**
 
 ```
-Rscript Infer_DUIPA.R -b /path/to/allbamfiles.txt -I /path/to/IPAFinder_IPUI.txt -d project -o /path/to/IPAFinder_DUIPA.txt
+Rscript Infer_DUIPA.R -b /path/to/allbamfiles.txt -I /path/to/IPAFinder_IPUI.txt -d /path/to/project -o /path/to/IPAFinder_DUIPA.txt
 ```
 
 Final results will be saved in the file ```IPAFinder_DUIPA.txt```.
