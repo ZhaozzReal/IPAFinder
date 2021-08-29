@@ -10,7 +10,7 @@ parser = ArgumentParser(description="De novo analysis of Intronic Polyadenylatio
 parser.add_argument("-b1",dest='bamfile1',action="store",type=str,help="input bamfile1")
 parser.add_argument("-b2",dest="bamfile2",action="store",type=str,help="input bamfile2")
 parser.add_argument('-anno',dest='anno_txt',action="store",type=str,help="input annotation file contains intron and flanking exons")
-parser.add_argument("-p",dest="proc",action="store",default=5,type=int,help="<INT> Number of processors used [default: 5]")
+parser.add_argument("-p",dest="proc",action="store",default=10,type=int,help="<INT> Number of processors used [default: 10]")
 parser.add_argument("-o",dest="outfile",action="store",type=str,help="Output all Intron PAsite and IPARatio")
 args = parser.parse_args()
 refGene_txt = args.anno_txt
