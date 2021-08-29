@@ -358,7 +358,7 @@ def Get_FDR(IPUIo,IPUIe):
 
 def Get_output(filename,PA_list,FDR_list):
     out_IPUI = open(filename,"w")
-    first_line = ["SYMBOL","intron_rank","Terminal_exon","IPAtype",args.bamfile1.split(".")[0],args.bamfile2.split(".")[0],"diff","qvalue","change"]
+    first_line = ["SYMBOL","intron_rank","Terminal_exon","IPAtype",args.bamfile1.split("/")[-1].split(".")[0],args.bamfile2.split("/")[-1].split(".")[0],"diff","qvalue","change"]
     out_IPUI.writelines("\t".join(first_line)+"\n")
     for i in range(len(PA_list)):
         SYMBOL,intron_rank,Terminal_exon,IPAtype,ctrlIPA,ctrlExon,caseIPA,caseExon = PA_list[i]
@@ -377,7 +377,6 @@ def Get_output(filename,PA_list,FDR_list):
 
 
 pool = Pool(args.proc)
-pool = Pool(30)
 input_tuple = list(zip(annot.keys(),[all_bamfiles]*len(annot)))
 result_list = pool.map(Get_IPAevent,input_tuple)
 PA_list = Get_PAlist(result_list)
