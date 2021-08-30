@@ -55,7 +55,7 @@ The UCSC tool ```gtfToGenePred``` is required here.
 python IPAFinder_GetAnno.py -gtf /path/to/hg38refGene.gtf -output /path/to/IPAFinder_anno_hg38.txt
 ```
 
-**We have generated annotation file for hg19, hg38 and mm10, and ones could download and use it directly.**
+**We have generated annotation file for hg19, hg38 and mm10, and we suggest readers use it directly.**
 
 
 
