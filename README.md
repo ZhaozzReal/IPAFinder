@@ -18,7 +18,7 @@ IPAFinder consists of both Python (3.5+) and R scripts:
 
 1. Install the following software pre-requisites:
 
-   i. python (required packages HTSeq, itertools, numpy, collections, multiprocessing, scipy, argparse, copy, and subprocess)
+   i. python (required packages HTSeq, itertools, numpy, collections, multiprocessing, scipy, argparse, os, warnings, and subprocess)
 
    ii. R (required packages optparse, dplyr, stringr, and DEXSeq)
 
