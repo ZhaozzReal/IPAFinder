@@ -1,26 +1,23 @@
-import HTSeq
-import itertools
+import itertools, collections, os, warnings
 import numpy as np
-import collections
-import pysam
 from multiprocessing import Pool
 import scipy as sp
 import scipy.stats
-import os
 from argparse import ArgumentParser,ArgumentTypeError
+import HTSeq
 parser = ArgumentParser(description="De novo analysis of Intronic Polyadenylation from standard RNA-seq (IpA analysis of replicated samples between two conditions)")
-parser.add_argument("-b",dest='bamfiles',action="store",type=str,help="Input file with all Bamfiles between two conditions")
+parser.add_argument("-b",dest='bamfiles',action="store",type=str,help="Input file with all bamfiles between two conditions")
 parser.add_argument('-anno',dest='anno_txt',action="store",type=str,help="Input annotation file contains intron and flanking exons information")
-parser.add_argument("-p",dest="processors",action="store",default=5,type=int,help="<INT> Number of processors used [default: 5]")
-parser.add_argument("-o",dest="outfile",action="store",type=str,help="Output all Intron PAsite and IPUI")
+parser.add_argument("-p",dest="processors",action="store",default=10,type=int,help="<INT> Number of processors used [default: 10]")
+parser.add_argument("-o",dest="outfile",action="store",type=str,help="Output all inferred intronic poly(A) sites and their IPUI values")
 args = parser.parse_args()
-refGene_txt = args.anno_txt
 annot = collections.OrderedDict()
-for line in open(refGene_txt):
+for line in open(args.anno_txt,"r"):
     gene_label,feature,rank,position,length,exon_rank_left,exon_rank_right = line.strip().split('\t')
     chrom,iv_str,strand = position.strip().split(':')
     start,end = map(int,iv_str.strip().split('-'))
     annot.setdefault(gene_label,[]).append((feature,int(rank),chrom,start,end,strand,int(length),exon_rank_left,exon_rank_right))
+
 
 def parse_cfgfile(cfg_file):
     for line in open(cfg_file,"r"):
@@ -45,11 +42,12 @@ def invert_strand(iv):
 
 
 def Get_label_information(label,annot,bam_reader):
+    warnings.simplefilter("ignore")
     gas = HTSeq.GenomicArrayOfSets("auto", stranded=False)
     ga = HTSeq.GenomicArray("auto", stranded=False, typecode="i")
     gene_count = {}
     for feature,rank,chrom,start,end,strand,length,exon_rank_left,exon_rank_right in annot[label]:
-        iv=HTSeq.GenomicInterval(chrom,start,end,strand)
+        iv = HTSeq.GenomicInterval(chrom,start,end,strand)
         gas[iv] += (feature,rank)
         gene_count[(feature,rank)] = 0
     boundary_left,boundary_right = min([i[3] for i in annot[label]]),max([i[4] for i in annot[label]])
@@ -75,14 +73,14 @@ def Get_label_information(label,annot,bam_reader):
             if a[0] is not None and a[0].aligned:
                 iv_seq = (cigop.ref_iv for cigop in a[0].cigar if cigop.type in cigar_char and cigop.size > 0)
             else:
-                iv_seq=tuple()
+                iv_seq = tuple()
             if a[1] is not None and a[1].aligned:
                 iv_seq = itertools.chain(iv_seq,(invert_strand(cigop.ref_iv) for cigop in a[1].cigar if cigop.type in cigar_char and cigop.size > 0))
-        feature_aligned=set()
+        feature_aligned = set()
         for iv in iv_seq:
             for iv2, val2 in gas[iv].steps():
                 feature_aligned |= val2
-                ga[iv] += 1  # for calculating coverage
+                ga[iv] += 1
         if len(feature_aligned) ==0:
             continue
         for f in [item for item in feature_aligned if item[0] == 'intron']:
@@ -278,7 +276,7 @@ def Get_IPAevent(input_tuple):
             intron_end = end
             end_value = 15
             index_list = [index for index,gene_count in enumerate(curr_label_all_gene_count) if gene_count[('intron',rank)]>50]
-            if index_list!=[]:#have any intron's counts more than 50
+            if index_list != []:
                 iv = HTSeq.GenomicInterval(chrom,intron_start,intron_end,strand)
                 IPAtype = "Composite"
                 curr_label_all_cov = []
@@ -291,7 +289,7 @@ def Get_IPAevent(input_tuple):
                 skipend_dict_list = [Get_Skipend_dict(intron_region,bamfile,strand) for bamfile in all_bamfiles]
                 for index,skipend_dict in enumerate(skipend_dict_list):
                     for key,value in skipend_dict.items():
-                        if int(start)+50<int(key)<int(end)-50 and int(value)>10:
+                        if int(start)+50 < int(key) < int(end)-50 and int(value)>10:
                             if strand == "+":
                                 skip_position = int(key)-int(start)
                             else:
@@ -318,14 +316,14 @@ def Get_IPAevent(input_tuple):
                     downstream_cov = min([len(list(filter(lambda x:x>5,coverage[IPA_point:])))/(len(coverage)-IPA_point) for coverage in curr_label_all_cov])
                     if min_mseratio_refine < 0.5 and up_down_diff > 1 and upstream_cov > 0.8 and downstream_cov < 0.5:
                         if strand == "+":
-                            IPA_location = int(start)+IPA_point
-                            IPA_inf = chrom+":"+str(start)+"-"+str(IPA_location)
+                            IPA_location = int(start) + IPA_point
+                            IPA_inf = chrom + ":" + str(start) + "-" + str(IPA_location)
                         else:
-                            IPA_location = int(end)-IPA_point
-                            IPA_inf = chrom+":"+str(IPA_location)+"-"+str(end)
+                            IPA_location = int(end) - IPA_point
+                            IPA_inf = chrom+":" + str(IPA_location) + "-" + str(end)
                         skipstart_dict = Get_Skipstart_dict(intron_region,all_bamfiles,strand)
                         for key,value in skipstart_dict.items():
-                            if IPA_location-20<int(key)<IPA_location+20 and int(value)>end_value*0.8:
+                            if IPA_location-20 < int(key) < IPA_location+20 and int(value) > end_value:
                                 break
                         else:
                             intronPA_inf = label + ";"+feature + "_" + str(rank) + ";" + IPA_inf + ";" +  IPAtype
@@ -335,36 +333,37 @@ def Get_IPAevent(input_tuple):
     return IPA_result,exon_count_list
 
 
+def output_IPUI(outfile,all_bamfiles,result_list):
+    out_IPUI = open(outfile,"w")
+    first_line = ["SYMBOL","intron_rank","Terminal_exon","IPAtype"]
+    filenames = [bamfile.split("/")[-1].split(".")[0] for bamfile in all_bamfiles]
+    first_line = first_line + filenames + ["IPUI_diff"]
+    out_IPUI.writelines("\t".join(first_line)+"\n")
+    for gene_list in result_list:
+        if gene_list[0] != []:
+            for IPA_lst in gene_list[0]:
+                if IPA_lst != []:
+                    out_IPUI.writelines('\t'.join(list(map(str,IPA_lst)))+'\n')
+    out_IPUI.close()
+
+
+def output_exoncount(all_bamfiles,result_list):
+    if os.path.exists("project/") == False:
+        os.makedirs("project/")
+    for i in range(len(all_bamfiles)):
+        bamfile_name = all_bamfiles[i]
+        out = open("project/" + bamfile_name.split("/")[-1].split(".")[0] + "_exoncount.txt","w")
+        for gene_list in result_list:
+            for exon_lst in gene_list[1]:
+                out.write("{}\t{}\n".format(exon_lst[0],exon_lst[i+1]))
+        out.close()
+
 
 bamfiles_condition1,bamfiles_condition2 = parse_cfgfile(args.bamfiles)
-all_bamfiles = bamfiles_condition1[:]
-all_bamfiles.extend(bamfiles_condition2)
+all_bamfiles = bamfiles_condition1 + bamfiles_condition2
 num_condition1 = len(bamfiles_condition1)
 pool = Pool(args.processors)
 input_tuple = list(zip(annot.keys(),[all_bamfiles]*len(annot)))
 result_list = pool.map(Get_IPAevent,input_tuple)
-out_IPUI = open(args.outfile,"w")
-first_line = ["SYMBOL","intron_rank","Terminal_exon","IPAtype"]
-for i in range(len(all_bamfiles)):
-    curr_ratio = all_bamfiles[i].split(".")[0]
-    first_line.append(curr_ratio)
-
-first_line.extend(["IPUI_diff"])
-out_IPUI.writelines("\t".join(first_line)+"\n")
-for gene_list in result_list:
-    if gene_list[0] != []:
-        for IPA_lst in gene_list[0]:
-            if IPA_lst != []:
-                out_IPUI.writelines('\t'.join(list(map(str,IPA_lst)))+'\n')
-
-out_IPUI.close()
-    
-os.makedirs("project/")
-os.chdir("project/")
-for i in range(len(all_bamfiles)):
-    bamfile_name = all_bamfiles[i]
-    out = open(bamfile_name.split(".")[0]+"_exoncount.txt","w")
-    for gene_list in result_list:
-        for exon_lst in gene_list[1]:
-            out.write("{}\t{}\n".format(exon_lst[0],exon_lst[i+1]))
-    out.close()
+output_IPUI(args.outfile,all_bamfiles,result_list)
+output_exoncount(all_bamfiles,result_list)
