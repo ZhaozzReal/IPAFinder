@@ -1,5 +1,5 @@
 import HTSeq
-import itertools
+import itertools, warnings
 import numpy as np
 import collections
 from multiprocessing import Pool
@@ -39,6 +39,7 @@ def invert_strand(iv):
 
 
 def Get_label_information(label,annot,bam_reader):
+    warnings.simplefilter("ignore")
     gas = HTSeq.GenomicArrayOfSets("auto", stranded=False)
     ga = HTSeq.GenomicArray("auto", stranded=False, typecode="i")
     gene_count = {}
