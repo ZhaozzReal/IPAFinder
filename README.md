@@ -128,7 +128,7 @@ The final output format is as follows:
 **Option 1: Infer differential used IPA sites using Fisher's exact test**
 
  ```
- python IPAFinder_PS_FET.py -b1 /path/to/ctrl.bam -b2 /path/to/case.bam -anno /path/to/IPAFinder_anno_hg38.txt -p 10 -o /path/to/IPAFinder_output.txt
+ python IPAFinder_PS_FET.py -b1 /path/to/ctrl.bam -b2 /path/to/case.bam -anno /path/to/IPAFinder_anno_hg38.txt -p 10 -o /path/to/IPAFinder_DUIPA.txt
  ```
 
 
@@ -136,6 +136,6 @@ The final output format is as follows:
 **Option 2: Infer differential used IPA sites using bootstrapping-based method**
 
 ```
-python IPAFinder_PS_FDR.py -b1 /path/to/ctrl.bam -b2 /path/to/case.bam -anno /path/to/IPAFinder_anno_hg38.txt -p 10 -o /path/to/IPAFinder_output.txt
+python IPAFinder_PS_FDR.py -b1 /path/to/ctrl.bam -b2 /path/to/case.bam -anno /path/to/IPAFinder_anno_hg38.txt -p 10 -o /path/to/IPAFinder_DUIPA.txt
 ```
 
