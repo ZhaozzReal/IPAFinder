@@ -323,7 +323,7 @@ def Get_IPAevent(input_tuple):
                             IPA_inf = chrom+":" + str(IPA_location) + "-" + str(end)
                         skipstart_dict = Get_Skipstart_dict(intron_region,all_bamfiles,strand)
                         for key,value in skipstart_dict.items():
-                            if IPA_location-20 < int(key) < IPA_location+20 and int(value) > end_value:
+                            if IPA_location-20 < int(key) < IPA_location+20 and int(value) > end_value*0.8:
                                 break
                         else:
                             intronPA_inf = label + ";"+feature + "_" + str(rank) + ";" + IPA_inf + ";" +  IPAtype
