@@ -1,10 +1,7 @@
 import HTSeq
-import itertools, warnings
+import itertools, warnings, collections
 import numpy as np
-import collections
 from multiprocessing import Pool
-import scipy as sp
-import scipy.stats
 from argparse import ArgumentParser,ArgumentTypeError
 parser = ArgumentParser(description="De novo analysis of Intronic Polyadenylation from standard RNA-seq (IpA analysis on paired samples)")
 parser.add_argument("-b1",dest='bamfile1',action="store",type=str,help="input bamfile1")
