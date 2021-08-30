@@ -5,15 +5,14 @@ suppressPackageStartupMessages(library(stringr))
 args = commandArgs(TRUE)
 option.list = list(
     make_option(c("-b","--bam"),action = "store_true",default = FALSE,help = "input file contains all filenames of bamfile [%default]"),
-    make_option(c("-I","--IPUI"),action = "store_true",default = FALSE,help = "input generated file contains all IPUI value[%default]"),
+    make_option(c("-I","--IPUI"),action = "store_true",default = FALSE,help = "input file generated in the previous step which contains all IPUI value [%default]"),
     make_option(c("-d","--dir"),action = "store_true",default = FALSE,help = "input directory name contains all exoncount files [%default]"),
     make_option(c("-o","--output"),action = "store_true",default = FALSE,help = "output final results[%default]")
     )
-desc = "Detect different expression IPA sites using DEXSeq"
+desc = "Infer differentially used IPA sites using DEXSeq model"
 parser = OptionParser(option_list = option.list, description = desc)
 opt = parse_args(parser, args = args, positional_arguments = TRUE)
 file_name = opt$args[1]
-
 cfg_file = read.table(opt$args[1])
 filenames = apply(cfg_file,1,function(x)strsplit(x,"=") %>% unlist() %>% .[2] %>% strsplit(",") %>% unlist()) %>% as.character()
 filename_prefix = c()
