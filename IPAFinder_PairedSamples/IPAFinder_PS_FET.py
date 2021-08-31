@@ -1,7 +1,6 @@
 import HTSeq
-import itertools, warnings
+import itertools, warnings, collections
 import numpy as np
-import collections
 from multiprocessing import Pool
 import scipy as sp
 import scipy.stats
@@ -263,7 +262,7 @@ def Get_IPAevent(input_tuple):
             intron_end = end
             end_value = 15
             index_list = [index for index,gene_count in enumerate(curr_label_all_gene_count) if gene_count[('intron',rank)]> min_count]
-            if index_list != []:#have any intron's counts more than 50
+            if index_list != []:
                 iv = HTSeq.GenomicInterval(chrom,intron_start,intron_end,strand)
                 IPAtype = "Composite"
                 curr_label_all_cov = []
