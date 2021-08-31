@@ -256,7 +256,7 @@ def Get_IPAevent(input_tuple):
             intron_end = end
             end_value = 15
             index_list = [index for index,gene_count in enumerate(curr_label_all_gene_count) if gene_count[('intron',rank)]> min_count]
-            if index_list != []:#have any intron's counts more than 50
+            if index_list != []:
                 iv = HTSeq.GenomicInterval(chrom,intron_start,intron_end,strand)
                 IPAtype = "Composite"
                 curr_label_all_cov = []
@@ -328,6 +328,7 @@ def Get_IPUIo_e(PA_list):
     for IPA in PA_list:
         SYMBOL,intron_rank,Terminal_exon,IPAtype,ctrlIPA,ctrlExon,caseIPA,caseExon = IPA
         IPUI_diff = caseIPA/caseExon - ctrlIPA/ctrlExon
+        IPUIo.append(IPUI_diff)
         IPA_mean = (caseIPA/caseExon + ctrlIPA/ctrlExon)/2
         FL_mean =  1 - IPA_mean
         ctrl_IPA = np.random.binomial(ctrlExon,IPA_mean,20)
@@ -337,12 +338,7 @@ def Get_IPUIo_e(PA_list):
         IPUI_list = []
         for i in range(20):
             diff = case_IPA[i]/(case_IPA[i]+case_FL[i]) - ctrl_IPA[i]/(ctrl_IPA[i]+ctrl_FL[i])
-            IPUI_list.append(diff)
-        IPUImean = np.mean(IPUI_list)
-        IPUIstd = np.std(IPUI_list,ddof = 1)
-        IPUIo.append((IPUI_diff-IPUImean)/IPUIstd)
-        for IPUI in IPUI_list:
-            IPUIe.append((IPUI-IPUImean)/IPUIstd)
+            IPUIe.append(diff)
     return IPUIo,IPUIe
 
 
