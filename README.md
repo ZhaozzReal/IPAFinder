@@ -55,11 +55,11 @@ The UCSC tool ```gtfToGenePred``` is required here.
 python IPAFinder_GetAnno.py -gtf /path/to/hg38refGene.gtf -output /path/to/IPAFinder_anno_hg38.txt
 ```
 
-**We have generated annotation file for hg19, hg38 and mm10, and we suggest readers use it directly.**
+**We have generated annotation file for hg19, hg38 and mm10, and we suggest users utilize it directly.**
 
 
 
-## Detect and quantify IPA sites, and calculate read counts of all exons
+## Detect IPA sites and quantify their usage, and calculate read counts of all exons
 
 **Command** 
 
@@ -125,7 +125,7 @@ The final output format is as follows:
 
 ### IPAFinder analysis on paired samples without replicates 
 
-**Option 1: Infer differential used IPA sites using Fisher's exact test**
+**Option 1: Infer differentially used IPA sites using Fisher's exact test-based method**
 
  ```
  python IPAFinder_PS_FET.py -b1 /path/to/ctrl.bam -b2 /path/to/case.bam -anno /path/to/IPAFinder_anno_hg38.txt -p 10 -o /path/to/IPAFinder_DUIPA.txt
@@ -133,7 +133,7 @@ The final output format is as follows:
 
 
 
-**Option 2: Infer differential used IPA sites using bootstrapping-based method**
+**Option 2: Infer differentially used IPA sites using bootstrapping-based method**
 
 ```
 python IPAFinder_PS_FDR.py -b1 /path/to/ctrl.bam -b2 /path/to/case.bam -anno /path/to/IPAFinder_anno_hg38.txt -p 10 -o /path/to/IPAFinder_DUIPA.txt
