@@ -65,6 +65,11 @@ python IPAFinder_GetAnno.py -gtf /path/to/hg38refGene.gtf -output /path/to/IPAFi
 
 ```
 python IPAFinder_DetectIPA.py -b /path/to/allbamfiles.txt -anno /path/to/IPAFinder_anno_hg38.txt -p 10 -o /path/to/IPAFinder_IPUI.txt
+
+
+# using test data
+cd IPAFinder
+python IPAFinder_DetectIPA.py -b test_data/allbamfiles.txt -anno anno_files/IPAFinder_anno_hg38.txt -o test_data/output.txt -e test_data/exon_count -p 1
 ```
 
 allbamfiles.txt contains all filename of bamfile between two conditions, as shown below:
