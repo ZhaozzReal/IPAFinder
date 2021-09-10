@@ -1,5 +1,6 @@
 import itertools, collections, os, warnings
 import numpy as np
+import os
 from multiprocessing import Pool
 import scipy as sp
 import scipy.stats
@@ -353,7 +354,7 @@ def output_exoncount(all_bamfiles,result_list, outdir):
         os.makedirs(outdir)
     for i in range(len(all_bamfiles)):
         bamfile_name = all_bamfiles[i]
-        out = open("project/" + bamfile_name.split("/")[-1].split(".")[0] + "_exoncount.txt","w")
+        out = open(os.path.join(outdir, bamfile_name.split("/")[-1].split(".")[0] + "_exoncount.txt"),"w")
         for gene_list in result_list:
             for exon_lst in gene_list[1]:
                 out.write("{}\t{}\n".format(exon_lst[0],exon_lst[i+1]))
