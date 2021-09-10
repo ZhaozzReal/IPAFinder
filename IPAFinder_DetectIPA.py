@@ -10,6 +10,7 @@ parser.add_argument("-b",dest='bamfiles',action="store",type=str,help="Input fil
 parser.add_argument('-anno',dest='anno_txt',action="store",type=str,help="Input annotation file contains intron and flanking exons information")
 parser.add_argument("-p",dest="processors",action="store",default=10,type=int,help="<INT> Number of processors used [default: 10]")
 parser.add_argument("-o",dest="outfile",action="store",type=str,help="Output all inferred intronic poly(A) sites and their IPUI values")
+parser.add_argument("-e",dest="countdest",action="store",type=str,help="folder to output exon count", default='project/')
 args = parser.parse_args()
 annot = collections.OrderedDict()
 for line in open(args.anno_txt,"r"):
@@ -347,9 +348,9 @@ def output_IPUI(outfile,all_bamfiles,result_list):
     out_IPUI.close()
 
 
-def output_exoncount(all_bamfiles,result_list):
-    if os.path.exists("project/") == False:
-        os.makedirs("project/")
+def output_exoncount(all_bamfiles,result_list, outdir):
+    if os.path.exists(outdir) == False:
+        os.makedirs(outdir)
     for i in range(len(all_bamfiles)):
         bamfile_name = all_bamfiles[i]
         out = open("project/" + bamfile_name.split("/")[-1].split(".")[0] + "_exoncount.txt","w")
@@ -366,4 +367,4 @@ pool = Pool(args.processors)
 input_tuple = list(zip(annot.keys(),[all_bamfiles]*len(annot)))
 result_list = pool.map(Get_IPAevent,input_tuple)
 output_IPUI(args.outfile,all_bamfiles,result_list)
-output_exoncount(all_bamfiles,result_list)
+output_exoncount(all_bamfiles,result_list, args.countdest)
