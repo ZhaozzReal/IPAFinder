@@ -117,13 +117,9 @@ The final output format is as follows:
 
 
 
+## IPAFinder analysis on paired samples without replicates 
 
 
-
-
-
-
-### IPAFinder analysis on paired samples without replicates 
 
 **Option 1: Infer differentially used IPA sites using Fisher's exact test-based method**
 
@@ -138,4 +134,20 @@ The final output format is as follows:
 ```
 python IPAFinder_PS_FDR.py -b1 /path/to/ctrl.bam -b2 /path/to/case.bam -anno /path/to/IPAFinder_anno_hg38.txt -p 10 -o /path/to/IPAFinder_DUIPA.txt
 ```
+
+
+
+## Citation
+
+*Please cite the following articles if you use IPAFinder in your research:*
+
+* Zhao Z, Xu Q, Wei R, Wang W, Ding D, Yang Y, Yao J, Zhang L, Hu YQ, Wei G, Ni T. Cancer-associated dynamics and potential regulators of intronic polyadenylation revealed by IPAFinder using standard RNA-seq data. Genome Res. 2021 Sep 2. doi: 10.1101/gr.271627.120. PMID: 34475268.
+
+* Zhao Z, Xu Q, Wei R, Huang L, Wang W, Wei G, Ni T. Comprehensive characterization of somatic variants associated with intronic polyadenylation in human cancers. Nucleic Acids Res. 2021 Oct 11. doi: 10.1093/nar/gkab772. PMID: 34508351.
+
+
+
+## Contact
+
+If you have any comments, suggestions, questions, bug reports, etc, feel free to contact Zhaozhao Zhao (zz_zhaobioinfo@126.com). And PLEASE attach your command line and log messages if possible.
 
