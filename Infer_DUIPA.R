@@ -2,6 +2,8 @@ suppressPackageStartupMessages(library(optparse))
 suppressPackageStartupMessages(library(DEXSeq))
 suppressPackageStartupMessages(library(dplyr))
 suppressPackageStartupMessages(library(stringr))
+warning("off")
+options(warn = -1)
 args = commandArgs(TRUE)
 option.list = list(
     make_option(c("-b","--bam"),action = "store_true",default = FALSE,help = "input file contains all filenames of bamfile [%default]"),
