@@ -107,8 +107,8 @@ The final output format is as follows:
 | Column        | Description                                                  |
 | ------------- | ------------------------------------------------------------ |
 | SYMBOL        | gene symbol                                                  |
-| Intron_rank   | rank number of intron contains IpA event                     |
-| Terminal_exon | genomic location of corresponding terminal exon of IpA isoform |
+| Intron_rank   | rank number of intron contains IPA event                     |
+| Terminal_exon | genomic location of corresponding terminal exon of IPA isoform |
 | IPAtype       | type of terminal exon (Skipped or Composite)                 |
 | *ctrl1*       | IPUI estimate for sample *ctrl1*                             |
 | *ctrl2*       | IPUI estimate for sample *ctrl2*                             |
@@ -117,7 +117,7 @@ The final output format is as follows:
 | IPUI_diff     | difference of mean IPUI between conditions                   |
 | pvalue        | *P* value for testing differential usage of terminal exon    |
 | padj          | adjusted *P* value for testing differential usage of terminal exon |
-| change        | Direction of changed IpA event (UP, DOWN, or NOT)            |
+| change        | Direction of changed IPA event (UP, DOWN, or NOT)            |
 
 
 
