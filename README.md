@@ -10,6 +10,9 @@ IPAFinder performs *de novo* identification and quantification of dynamic IPA ev
 
 ##  Diagram illuminates the IPAFinder algorithm. 
 
+Panel A indicates the schematic diagram of IPAFinder in detecting composite terminal exon IPA event.
+Panel B indicates the schematic diagram of IPAFinder in quantifying the usage of composite IPA site.
+
 ![image](https://github.com/ZhaozzReal/IPAFinder/blob/master/Diagram.jpg)
 
 ## Installation
