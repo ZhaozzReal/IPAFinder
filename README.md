@@ -4,7 +4,7 @@
 
 ## Description
 
-IPAFinder performs *de novo* identification and quantification of dynamic IpA events using standard RNA-seq, regardless of any prior poly(A) site annotation. Assuming there is an intronic poly(A) site used in a given intron, IPAFinder models the normalized single-nucleotide resolution RNA-seq read coverage profiles and identifies profound drop in coverage to infer the used poly(A) site. To detect skipped IpA, IPAFinder recognized cryptic 3′ splice site by junction-spanning reads and concatenated preceding exon to potential terminal exon. IPAFinder also has the ability to exclude alternative splicing events such as alternative 5′ splice site and cryptic exon activation by recognizing junction-spanning reads.
+IPAFinder performs *de novo* identification and quantification of dynamic IPA events using standard RNA-seq, regardless of any prior poly(A) site annotation. Assuming there is an intronic poly(A) site used in a given intron, IPAFinder models the normalized single-nucleotide resolution RNA-seq read coverage profiles and identifies the profound drop in coverage to infer the potential IPA site. To detect skipped IPA events, IPAFinder recognized cryptic 3′ splice site by junction-spanning reads and concatenated preceding constitutive exon to potential terminal exon. IPAFinder also has the ability to exclude alternative splicing events such as alternative 5′ splice site and cryptic exon activation by recognizing junction-spanning reads.
 
 
 
@@ -86,9 +86,9 @@ project/
 
 
 
-## Infer differential usage of IPA sites
+## Infer statistically differential usage of IPA sites
 
-DEXSeq, which is widely used for differential exon usage analysis on RNA-seq data, was applied to detect differential usage of IPA sites. This statistical framework could account for biological variability between replicates and is robust to changes in isoform abundance between conditions.
+DEXSeq, which is widely used for differential exon usage analysis on standard RNA-seq data, was applied to detect differential usage of IPA terminal exon. This statistical framework could account for biological variability between replicates and is robust to changes in isoform abundance between conditions.
 
 **Command**
 
