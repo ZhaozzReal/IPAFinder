@@ -141,17 +141,18 @@ python IPAFinder_PS_FDR.py -b1 /path/to/ctrl.bam -b2 /path/to/case.bam -anno /pa
 
 ## Population-level IPA detection and quantification
 
-**Step1: Detect IPA events from single RNA-seq sample
+
+**Step1: Detect IPA events from single RNA-seq sample**
 ```
 python IPAFinder_DetectIPA.py -b /path/to/sample1.bam -anno /path/to/IPAFinder_anno_hg38.txt -p 10 -o /path/to/sample1_IPA.txt
 ```
 
-**Step2: Merge and ontain all non-redundant IPA events from all samples
+**Step2: Merge and ontain all non-redundant IPA events from all samples**
 ```
 python IPAFinder_MergeIPA.py /path/to/ -o /path/to/IPA_merge.txt
 ```
 
-**Step3: Quantify the usage of IPA events across all samples
+**Step3: Quantify the usage of IPA events across all samples**
 ```
 python IPAFinder_QuanIPA.py -b /path/to/allbamfiles.txt -IPA /path/to/IPA_merge.txt -p 10 -o /path/to/IPA_merge_IPUI.txt
 ```
