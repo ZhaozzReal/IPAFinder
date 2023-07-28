@@ -149,7 +149,7 @@ python IPAFinder_DetectIPA.py -b /path/to/sample1.bam -anno /path/to/IPAFinder_a
 
 **Step2: Merge and ontain all non-redundant IPA events from all samples**
 ```
-python IPAFinder_MergeIPA.py -p /path of sampleN_IPA.txt/ -o /path/to/IPA_merge.txt
+python IPAFinder_MergeIPA.py -path /path of sampleN_IPA.txt/ -o /path/to/IPA_merge.txt
 ```
 
 **Step3: Quantify the usage of IPA events across all samples**
