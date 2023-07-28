@@ -4,7 +4,7 @@
 
 ## Description
 
-IPAFinder performs *de novo* identification and quantification of dynamic IPA events using standard RNA-seq, regardless of any prior poly(A) site annotation. Assuming there is an intronic poly(A) site used in a given intron, IPAFinder models the normalized single-nucleotide resolution RNA-seq read coverage profiles and identifies the profound drop in coverage to infer the potential IPA site. To detect skipped IPA events, IPAFinder recognized cryptic 3′ splice site by junction-spanning reads and concatenated preceding constitutive exon to potential terminal exon. IPAFinder also has the ability to exclude alternative splicing events such as alternative 5′ splice site and cryptic exon activation by recognizing junction-spanning reads.
+IPAFinder performs *de novo* identification and quantification of IPA events using standard RNA-seq data based on "change point" model, which has been widely used for tandem 3' UTR APA analysis. IPAFinder could exclude the interference of alternative splicing events such as alternative 5' splice site and cryptic exon activation by recognizing junction-spanning reads.
 
 
 
@@ -137,6 +137,28 @@ The final output format is as follows:
 
 ```
 python IPAFinder_PS_FDR.py -b1 /path/to/ctrl.bam -b2 /path/to/case.bam -anno /path/to/IPAFinder_anno_hg38.txt -p 10 -o /path/to/IPAFinder_DUIPA.txt
+```
+
+## Population-level IPA detection and quantification
+
+**Step1: Detect IPA events from single RNA-seq sample
+```
+python IPAFinder_DetectIPA.py -b /path/to/sample1.bam -anno /path/to/IPAFinder_anno_hg38.txt -p 10 -o /path/to/sample1_IPA.txt
+```
+
+**Step2: Merge and ontain all non-redundant IPA events from all samples
+```
+python IPAFinder_MergeIPA.py /path/to/ -o /path/to/IPA_merge.txt
+```
+
+**Step3: Quantify the usage of IPA events across all samples
+```
+python IPAFinder_QuanIPA.py -b /path/to/allbamfiles.txt -IPA /path/to/IPA_merge.txt -p 10 -o /path/to/IPA_merge_IPUI.txt
+```
+allbamfiles.txt contains all filename of bamfiles, as shown below:
+
+```
+/path/to/sample1.bam,/path/to/sample2.bam,/path/to/sample3.bam,/path/to/sampleN.bam
 ```
 
 
