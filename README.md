@@ -140,7 +140,7 @@ python IPAFinder_PS_FDR.py -b1 /path/to/ctrl.bam -b2 /path/to/case.bam -anno /pa
 ```
 
 ## Population-level IPA detection and quantification
-
+Given that a large amount of publicly available standard RNA-seq data has been accumulated, we updata the pipeline for population-level IPA analysis, which could be used in datasets from TCGA or GTEx project.
 
 **Step1: Detect IPA events from single RNA-seq sample**
 ```
@@ -149,7 +149,7 @@ python IPAFinder_DetectIPA.py -b /path/to/sample1.bam -anno /path/to/IPAFinder_a
 
 **Step2: Merge and ontain all non-redundant IPA events from all samples**
 ```
-python IPAFinder_MergeIPA.py /path/to/ -o /path/to/IPA_merge.txt
+python IPAFinder_MergeIPA.py -p /path of sampleN_IPA.txt/ -o /path/to/IPA_merge.txt
 ```
 
 **Step3: Quantify the usage of IPA events across all samples**
