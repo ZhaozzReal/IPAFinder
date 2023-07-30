@@ -63,7 +63,7 @@ python IPAFinder_GetAnno.py -gtf /path/to/hg38refGene.gtf -output /path/to/IPAFi
 
 
 
-## Detect IPA sites and quantify their usage, and calculate read counts of all exons
+## Detect IPA sites and quantify their usage
 
 **Command** 
 
@@ -92,7 +92,7 @@ project/
 
 ## Infer statistically differential usage of IPA sites
 
-DEXSeq, which is widely used for differential exon usage analysis on standard RNA-seq data, was applied to detect differential usage of IPA terminal exon. This statistical framework could account for biological variability between replicates and is robust to changes in isoform abundance between conditions.
+DEXSeq, the model for differential exon usage analysis based on standard RNA-seq data, was applied to detect differential usage of IPA terminal exon. This statistical framework could account for biological variability between replicates and is robust to changes in isoform abundance between conditions.
 
 **Command**
 
