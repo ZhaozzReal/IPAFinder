@@ -150,9 +150,9 @@ allbamfiles.txt contains all filename of bamfiles, as shown below:
 ```
 /path/to/sample1.bam,/path/to/sample2.bam,/path/to/sample3.bam,/path/to/sampleN.bam
 ```
-## Output
+### Output
 
-In ```/path/to/DATTSS_output.txt```, each row corresponds to one tandem TSS event and its related features.
+In ```/path/to/Allsamples_IPUI.txt```, each row corresponds to one IPA event and its related features.
 
 The explanation of each column is as follows:
  
