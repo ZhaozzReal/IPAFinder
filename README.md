@@ -150,6 +150,23 @@ allbamfiles.txt contains all filename of bamfiles, as shown below:
 ```
 /path/to/sample1.bam,/path/to/sample2.bam,/path/to/sample3.bam,/path/to/sampleN.bam
 ```
+## Output
+
+In ```/path/to/DATTSS_output.txt```, each row corresponds to one tandem TSS event and its related features.
+
+The explanation of each column is as follows:
+ 
+ * Genename: the HUGO gene symbol
+ * Intron: the rank of intron containing IPA event  
+ * Strand: the strand of gene 
+ * IPAtype: the type of IPA event. For skipped IPA event, the genomic location of cryptic 3' splice site is indicated
+ * IPA_region: the genomic region of IPA terminal exon
+ * exon_region: the genomic region of constitutive upstream exon
+ * sample1.bam：the IPA site usage of given IPA event in sample1 (```None``` means that the mean coverage of upstream exon region is lower than certain cutoff (default=25), which should be discarded from downstream analysis)
+ * sample2.bam：the IPA site usage of given IPA event in sample2
+ * sample3.bam：the IPA site usage of given IPA event in sample3
+ * sampleN.bam：the IPA site usage of given IPA event in sampleN
+
 
 **We also provide substeps for population-level IPA analysis**
 
