@@ -182,7 +182,7 @@ python IPAFinder_MergeIPA.py -path /path of sampleN_IPA.txt/ -o /path/to/IPA_mer
 
 ***Step3: Quantify the usage of IPA events across all samples***
 ```
-python IPAFinder_QuanIPA.py -b /path/to/allbamfiles.txt -IPA /path/to/IPA_merge.txt -p 10 -o /path/to/IPA_merge_IPUI.txt
+python IPAFinder_QuanIPA.py -b /path/to/allbamfiles.txt -IPA /path/to/IPA_merge.txt -p 10 -o /path/to/Allsamples_IPUI.txt
 ```
 
 
