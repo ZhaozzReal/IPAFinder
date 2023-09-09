@@ -1,0 +1,2 @@
+condition1=test_data/cond1.bam
+condition2=test_data/cond2.bam
