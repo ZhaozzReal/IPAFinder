@@ -1,0 +1,2 @@
+SYMBOL	intron_rank	Terminal_exon	IPAtype	cond1	cond2	IPUI_diff
+ETV5	intron_15	chr3:186095194-186095313	Skipped	0.259	0.141	-0.11800000000000002
